@@ -16,11 +16,10 @@ int bg1x=640;
 int bg2x=0;
 int x=0;
 int y=0;
-int z=0;
 int hpX=0;
 int hpY=0;
 int treasureX=0;
-int enemyX;
+int enemyX=0;
 int enemyY=floor(random(481));
 int treasureY=floor(random (481));
 int bloodX=40;
@@ -101,19 +100,26 @@ void draw() {
           image(bg2Img,y,0); 
           bg1x=bg1x+5;
           bg2x=bg2x+5;
-          z %= 640;
-          image(enemyImg,z,enemyY);
-          z=z+10;
+          enemyX %= 640;
+          image(enemyImg,enemyX,enemyY);
+          enemyX = enemyX +10;
           image(hpImg,hpX,hpY);
           image(treasureImg,treasureX,treasureY);
           treasureX=treasureX+6;
           image(fighterImg,fighterImgX,fighterImgY);
           fill(255,0,0);
           rect(5,5,bloodX,20);
-           if (enemyX >= fighterImgX ){
-               if(enemyY >= fighterImgY && enemyY <= fighterImgY+50 ){
+           if (enemyX >= fighterImgX-20 && enemyX <= fighterImgX+50){
+               if(enemyY >= fighterImgY-50 && enemyY <= fighterImgY+50 ){
                  enemyX=0;
                  bloodX -=bloodSpeed;
+                                  
+               }
+            }
+             if (treasureX >= fighterImgX-20 && treasureX <= fighterImgX+50){
+               if(treasureY >= fighterImgY-50 && treasureY <= fighterImgY+50 ){
+                 treasureY=0;
+                 bloodX  +=bloodSpeed;
                                   
                }
             }
@@ -129,8 +135,7 @@ void draw() {
                     if(mouseY<350 && 300<mouseY){
                        if(mousePressed){
                           state=GAME_START;
-                         
-                        }
+                                                }
                     }
                     
             }
