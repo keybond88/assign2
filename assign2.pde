@@ -1,4 +1,4 @@
-///You should implement your assign2 here.
+//You should implement your assign2 here.
 final int GAME_START=0;
 final int GAME_RUN=1;
 final int GAME_OVER=2;
@@ -58,7 +58,8 @@ void draw() {
                  noFill();
                  rect(200,370,260,50); 
                  if(mousePressed){
-                  state=GAME_RUN;
+                   bloodX = 40;
+                   state=GAME_RUN;
                   }
                }
            }
@@ -108,8 +109,11 @@ void draw() {
           rect(5,5,bloodX,20);
            if (enemyX >= fighterImgX ){
                if(enemyY >= fighterImgY && enemyY <= fighterImgY+50 ){
+                 enemyX=0;
+                fighterImgX=width/2;
+                fighterImgY=height/2;
                  bloodX -=bloodSpeed;
-                 
+                                  
                }
             }
           if (bloodX <= 0)
@@ -123,8 +127,7 @@ void draw() {
                if (mouseX<460 && 200<mouseX ){
                     if(mouseY<350 && 300<mouseY){
                        if(mousePressed){
-                         bloodX =40;
-                         state=GAME_START;
+                          state=GAME_START;
                          
                         }
                     }
