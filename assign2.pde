@@ -58,6 +58,8 @@ void draw() {
                  noFill();
                  rect(200,370,260,50); 
                  if(mousePressed){
+                  fighterImgX=width/2;
+                  fighterImgY=height/2;
                    bloodX = 40;
                    state=GAME_RUN;
                   }
@@ -66,7 +68,8 @@ void draw() {
            break;
            }
        case GAME_RUN:{
-          if (upPressed){
+         
+         if (upPressed){
           fighterImgY -=speed;
           }
         if (downPressed){
@@ -110,14 +113,12 @@ void draw() {
            if (enemyX >= fighterImgX ){
                if(enemyY >= fighterImgY && enemyY <= fighterImgY+50 ){
                  enemyX=0;
-                fighterImgX=width/2;
-                fighterImgY=height/2;
                  bloodX -=bloodSpeed;
                                   
                }
             }
           if (bloodX <= 0)
-            state=GAME_OVER;
+             state=GAME_OVER;
           
            break;
          
