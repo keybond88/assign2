@@ -111,6 +111,7 @@ void draw() {
            if (enemyX >= fighterImgX-20 && enemyX <= fighterImgX+20){
                if(enemyY >= fighterImgY-20 && enemyY <= fighterImgY+20 ){
                  enemyX=0;
+                 enemyY=floor(random (475));
                  bloodX -=bloodSpeed;
                                   
                }
@@ -118,7 +119,7 @@ void draw() {
              if (treasureX >= fighterImgX-20 && treasureX <= fighterImgX+20){
                if(treasureY >= fighterImgY-20 && treasureY <= fighterImgY+20 ){
                  treasureX=floor(random(635));
-                 treasureY=floor(random (481));
+                 treasureY=floor(random (475));
                  bloodX  +=bloodSpeed;
                                   
                }
