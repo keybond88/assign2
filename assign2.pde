@@ -108,15 +108,15 @@ void draw() {
           image(fighterImg,fighterImgX,fighterImgY);
           fill(255,0,0);
           rect(5,5,bloodX,20);
-           if (enemyX >= fighterImgX-20 && enemyX <= fighterImgX+50){
-               if(enemyY >= fighterImgY-50 && enemyY <= fighterImgY+50 ){
+           if (enemyX >= fighterImgX-20 && enemyX <= fighterImgX+20){
+               if(enemyY >= fighterImgY-20 && enemyY <= fighterImgY+20 ){
                  enemyX=0;
                  bloodX -=bloodSpeed;
                                   
                }
             }
-             if (treasureX >= fighterImgX-20 && treasureX <= fighterImgX+50){
-               if(treasureY >= fighterImgY-50 && treasureY <= fighterImgY+50 ){
+             if (treasureX >= fighterImgX-20 && treasureX <= fighterImgX+20){
+               if(treasureY >= fighterImgY-20 && treasureY <= fighterImgY+20 ){
                  treasureX=floor(random(635));
                  treasureY=floor(random (481));
                  bloodX  +=bloodSpeed;
