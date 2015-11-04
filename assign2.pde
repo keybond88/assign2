@@ -4,8 +4,10 @@ final int GAME_RUN=1;
 final int GAME_OVER=2;
 int state;
 int bloodSpeed=20;
-PImage startImg;
-PImage endImg;
+PImage startImg2;
+PImage startImg1;
+PImage endImg1;
+PImage endImg2;
 PImage bg1Img;
 PImage bg2Img;
 PImage enemyImg;
@@ -34,8 +36,10 @@ int speed=5;
 void setup () {
   size(640, 480) ;
  state=GAME_START;
- startImg=loadImage("img/start1.png");
-  endImg=loadImage("img/end1.png");
+ startImg1=loadImage("img/start1.png");
+ startImg2=loadImage("img/start2.png");
+  endImg1=loadImage("img/end1.png");
+   endImg2=loadImage("img/end2.png");
    bg1Img=loadImage("img/bg1.png");
   bg2Img=loadImage("img/bg2.png");
   enemyImg=loadImage("img/enemy.png");
@@ -50,12 +54,10 @@ void draw() {
 
     switch(state){
        case GAME_START:{
-           image(startImg,0,0);
-           if (mouseX<460 && 200<mouseX ){
-               if(mouseY<420 && 370<mouseY){
-                 stroke(0,255,0);
-                 noFill();
-                 rect(200,370,260,50); 
+           image(startImg2,0,0);
+           if (mouseX<450 && 210<mouseX ){
+               if(mouseY<410 && 380<mouseY){
+                  image(startImg1,0,0);
                  if(mousePressed){
                   fighterImgX=width/2;
                   fighterImgY=height/2;
@@ -108,21 +110,23 @@ void draw() {
           image(fighterImg,fighterImgX,fighterImgY);
           fill(255,0,0);
           rect(5,5,bloodX,20);
-           if (enemyX >= fighterImgX-20 && enemyX <= fighterImgX+20){
-               if(enemyY >= fighterImgY-20 && enemyY <= fighterImgY+20 ){
+           if (enemyX >= fighterImgX-50 && enemyX <= fighterImgX+50){
+               if(enemyY >= fighterImgY-50 && enemyY <= fighterImgY+50 ){
                  enemyX=0;
-                 enemyY=floor(random (475));
+                 enemyY=floor(random (460));
                  bloodX -=bloodSpeed;
                                   
                }
             }
-             if (treasureX >= fighterImgX-20 && treasureX <= fighterImgX+20){
-               if(treasureY >= fighterImgY-20 && treasureY <= fighterImgY+20 ){
-                 treasureX=floor(random(635));
-                 treasureY=floor(random (475));
+             if (treasureX >= fighterImgX-40 && treasureX <= fighterImgX+40)
+               if(treasureY >= fighterImgY-40 && treasureY <= fighterImgY+40 ){
+                 treasureX=floor(random(600));
+                 treasureY=floor(random (440));
                  bloodX  +=bloodSpeed;
-                                  
-               }
+                 if (bloodX>200){
+                   bloodX=200;
+                 }             
+               
             }
            if(enemyY < fighterImgY){
                  enemyY +=1;
@@ -138,10 +142,11 @@ void draw() {
          
            }
        case GAME_OVER:{
-           image(endImg,0,0);
+           image(endImg2,0,0);
                if (mouseX<460 && 200<mouseX ){
                     if(mouseY<350 && 300<mouseY){
-                       if(mousePressed){
+                      image(endImg1,0,0);
+                      if(mousePressed){
                           state=GAME_START;
                                                 }
                     }
